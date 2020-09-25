@@ -1,0 +1,24 @@
+package:
+- any: ['package-lock.json', 'package.json']
+
+source:
+- any: ['src/**/*', '!src/docs/*', '!src/assets/*', '!src/utils/*']
+
+eslint:
+- any: ['.eslintignore', '.eslintrc.cjs']
+
+git:
+- any: ['.github/*', '.gitignore']
+
+docs:
+- any: ['*.md', 'README.md', 'src/docs/*']
+
+nvm: .nvmrc
+
+assets: src/assets/*
+
+utils: src/utils/*
+
+webpack: webpack.config.js
+
+babel: babel.config.json

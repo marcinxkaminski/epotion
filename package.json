@@ -25,9 +25,10 @@
     "url": "git+https://github.com/marcinxkaminski/face-expression-detector-js.git"
   },
   "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 8"
+    "> 0.5%",
+    "last 2 versions",
+    "ie >= 10",
+    "not dead"
   ],
   "keywords": [
     "face",
@@ -73,7 +74,7 @@
     "svg-url-loader": "^6.0.0",
     "jest": "^26.4.2",
     "terser-webpack-plugin": "^4.2.2",
-    "webpack": "^5.0.0-beta.33",
+    "webpack": "^5.0.0-rc.0",
     "webpack-bundle-analyzer": "^3.9.0",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
