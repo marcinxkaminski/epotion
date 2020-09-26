@@ -11,12 +11,12 @@ module.exports = {
   entry: {
     index: path.join(__dirname, package_.main),  },
   output: {
-    filename: '[name].js',
+    filename: '[name].[contenthash].js',
     path: path.join(__dirname, 'dist'),
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({ chunks: ['index'], template: 'src/index.html' }),
+    new HtmlWebpackPlugin({ chunks: ['index'], template: 'src/demo.html' }),
     new BundleAnalyzerPlugin({ analyzerMode: 'static', openAnalyzer: false })
   ],
   module: {
@@ -38,16 +38,6 @@ module.exports = {
           options: { iesafe: true },
         },
       },
-      {
-        test: /\.m?js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ['@babel/preset-env']
-          }
-        }
-      }
     ],
   },
   optimization: {
@@ -67,8 +57,7 @@ module.exports = {
     host: '0.0.0.0',
     compress: true,
     https: true,
-    port: 2000,
-    open: true,
+    port: 8080,
     hot: true,
   },
 };

@@ -2,7 +2,7 @@
   "name": "face-expression-detector",
   "version": "0.0.1",
   "description": "Detects face expressions and gathers the data for later analysis",
-  "main": "src/index.js",
+  "main": "src/facial-expression.js",
   "private": true,
   "type": "module",
   "scripts": {
@@ -10,7 +10,7 @@
     "reinstall": "npm run clean && npm install",
     "rebuild": "npm run clean && npm install && npm run build",
     "start": "npm run start:dev",
-    "start:dev": "webpack-dev-server --progress --colors --config webpack.config.cjs",
+    "start:dev": "webpack-dev-server --progress --colors --hot --config webpack.config.cjs",
     "build": "webpack --config webpack.config.cjs",
     "lint": "eslint './src/**/*.js'",
     "lint:fix": "eslint --fix './src/**/*.js'",
@@ -43,9 +43,6 @@
   },
   "homepage": "https://github.com/marcinxkaminski/face-expression-detector-js#readme",
   "devDependencies": {
-    "@babel/core": "^7.11.6",
-    "@babel/preset-env": "^7.11.5",
-    "babel-loader": "^8.1.0",
     "clean-css-loader": "^2.0.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^4.3.0",
