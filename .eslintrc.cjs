@@ -1,19 +1,20 @@
 module.exports = {
   env: {
-    node: true,
     jest: true,
+    node: true,
     es2020: true,
     browser: true,
   },
   plugins: [
     'xss',
     'html',
-    'jest',
+    "jest",
     'sonarjs',
     'unicorn',
+    'jest-dom',
     'security',
     'markdown',
-    'jest-dom',
+    'prettier',
     'filenames',
     'no-secrets',
     'switch-case',
@@ -24,6 +25,8 @@ module.exports = {
   ],
   extends: [
     'airbnb-base',
+    'prettier',
+    'plugin:jest/style',
     'plugin:jest/recommended',
     'plugin:no-unsanitized/DOM',
     'plugin:sonarjs/recommended',
@@ -35,6 +38,10 @@ module.exports = {
     'plugin:optimize-regex/recommended',
     'plugin:eslint-comments/recommended',
   ],
+  globals: {
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly',
+  },
   parserOptions: {
     sourceType: 'module',
     ecmaVersion: 2020,
@@ -46,6 +53,8 @@ module.exports = {
     },
   ],
   rules: {
+    'no-console': ["error", { allow: ["warn", "error"] }],
+    'prettier/prettier': ['error'],
     'simple-import-sort/sort': 'error',
     'import/prefer-default-export': 'off',
     'no-secrets/no-secrets': [

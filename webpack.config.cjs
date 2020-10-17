@@ -16,7 +16,7 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({ chunks: ['index'], template: 'src/demo.html' }),
+    new HtmlWebpackPlugin({ chunks: ['index'], template: 'public/demo.html' }),
     new BundleAnalyzerPlugin({ analyzerMode: 'static', openAnalyzer: false })
   ],
   module: {
@@ -32,26 +32,19 @@ module.exports = {
         use: ['style-loader', 'css-loader', { loader: 'clean-css-loader', options: { level: 2 } }],
       },
       {
-        test: /\.svg/,
-        use: {
-          loader: 'svg-url-loader',
-          options: { iesafe: true },
-        },
+        test: /\.svg$/,
+        loader: 'svg-inline-loader'
       },
     ],
   },
   optimization: {
-    minimize: true,
     minimizer: [
       new OptimizeCssAssetsPlugin(),
       new TerserPlugin(),
     ],
-    splitChunks: {
-      chunks: 'all',
-    },
   },
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: path.join(__dirname, 'public'),
     historyApiFallback: true,
     disableHostCheck: true,
     host: '0.0.0.0',
