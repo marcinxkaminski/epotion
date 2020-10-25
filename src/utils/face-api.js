@@ -8,13 +8,13 @@ export const loadModels = async () => {
   await nets.ageGenderNet.loadFromUri('/models');
 };
 
-export const getFaceExpressionsAgeAndGender = async (image) => {
+export const getEmotionAgeAndGender = async (image) => {
   const face = await detectSingleFace(image, new TinyFaceDetectorOptions())
     .withFaceExpressions()
     .withAgeAndGender();
 
   return {
-    expression: getEntryWithMaxValueFromObject(face.expressions).key,
+    emotion: getEntryWithMaxValueFromObject(face.expressions).key,
     age: Math.round(face.age),
     gender: face.gender,
   };

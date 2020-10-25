@@ -1,21 +1,39 @@
-import { IMAGE_COMPRESSION, IMAGE_WIDTH } from './config';
+import { getGeo } from './api/geo';
+import { reportData } from './api/main';
+import { EVENTS } from './constants';
 import { getImage } from './utils/camera';
 import eventEmmiter from './utils/events';
-import { getFaceExpressionsAgeAndGender, loadModels } from './utils/face-api';
-
-(async () => {
-  await loadModels();
-  const image = await getImage(IMAGE_WIDTH, IMAGE_COMPRESSION);
-  const { expression, age, gender } = await getFaceExpressionsAgeAndGender(image);
-  // eslint-disable-next-line no-unsanitized/property
-  document.body.innerHTML = `<br>${JSON.stringify({
-    expression,
-    age,
-    gender,
-  })}`;
-  document.body.append(image);
-})();
+import { getEmotionAgeAndGender, loadModels } from './utils/face-api';
 
 // eslint-disable-next-line import/named
+export { EVENTS } from './constants';
+
+let trackingIntervalId;
+
 export const { on } = eventEmmiter;
-export const detectFaceExpressionsAgeAndGender = getFaceExpressionsAgeAndGender;
+
+export const init = async () => {
+  await loadModels();
+};
+
+export const getData = async () => {
+  const image = await getImage();
+  return getEmotionAgeAndGender(image);
+};
+
+export const startTracking = ({ intervalSec = 30, withDefaultReporter = true }) => {
+  trackingIntervalId = setInterval(async () => {
+    const data = await getData();
+    const geo = await getGeo();
+    const dataToReport = { ...data, ...geo };
+
+    eventEmmiter.emit(EVENTS.TRACKED, dataToReport);
+
+    if (withDefaultReporter) {
+      reportData(dataToReport);
+      eventEmmiter.emit(EVENTS.REPORTED, dataToReport);
+    }
+  }, intervalSec * 1000);
+};
+
+export const stopTracking = () => trackingIntervalId && clearInterval(trackingIntervalId);
