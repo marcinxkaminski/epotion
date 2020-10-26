@@ -1,8 +1,8 @@
 {
-  "name": "face-expression-detector",
+  "name": "epotion",
   "version": "0.0.1",
   "description": "Detects face expressions and gathers the data for later analysis",
-  "main": "src/facial-expression.js",
+  "main": "src/epotion.js",
   "private": true,
   "type": "module",
   "scripts": {
@@ -14,7 +14,7 @@
     "build": "webpack --config webpack.config.cjs",
     "lint": "eslint './src/**/*.js'",
     "lint:fix": "eslint --fix './src/**/*.js'",
-    "test": "jest"
+    "test": "jest -- -coverage"
   },
   "engines": {
     "node": ">= 14.0.0",
@@ -22,62 +22,51 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/marcinxkaminski/face-expression-detector-js.git"
+    "url": "git+https://github.com/marcinxkaminski/epotion.git"
   },
-  "browserslist": [
-    "> 0.5%",
-    "last 2 versions",
-    "ie >= 10",
-    "not dead"
-  ],
   "keywords": [
     "face",
     "expressions",
     "machine learning",
     "ai"
   ],
-  "author": "Marcin Kaminski <ma.kaminski+fed@icloud.com> (https://github.com/marcinxkaminski)",
+  "author": "Marcin Kaminski <ma.kaminski+epotion@icloud.com> (https://github.com/marcinxkaminski)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/marcinxkaminski/face-expression-detector-js/issues"
+    "url": "https://github.com/marcinxkaminski/epotion/issues"
   },
-  "homepage": "https://github.com/marcinxkaminski/face-expression-detector-js#readme",
+  "homepage": "https://github.com/marcinxkaminski/epotion#readme",
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "clean-css-loader": "^2.0.0",
+    "@testing-library/jest-dom": "^5.11.5",
     "clean-webpack-plugin": "^3.0.0",
-    "css-loader": "^4.3.0",
-    "eslint": "^7.11.0",
+    "eslint": "^7.12.0",
     "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-config-prettier": "^6.12.0",
+    "eslint-config-prettier": "^6.14.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-filenames": "^1.3.2",
     "eslint-plugin-html": "^6.1.0",
-    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jest": "^24.1.0",
-    "eslint-plugin-jest-dom": "^3.2.3",
+    "eslint-plugin-jest-dom": "^3.2.4",
     "eslint-plugin-markdown": "^2.0.0-rc.0",
     "eslint-plugin-no-secrets": "^0.6.8",
-    "eslint-plugin-no-unsanitized": "^3.1.2",
+    "eslint-plugin-no-unsanitized": "^3.1.5",
     "eslint-plugin-optimize-regex": "^1.2.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-simple-import-sort": "^5.0.3",
     "eslint-plugin-sonarjs": "^0.5.0",
     "eslint-plugin-switch-case": "^1.1.2",
-    "eslint-plugin-unicorn": "^22.0.0",
+    "eslint-plugin-unicorn": "^23.0.0",
     "eslint-plugin-xss": "^0.1.10",
     "html-webpack-plugin": "^4.5.0",
     "husky": "^5.0.0-alpha.6",
-    "jest": "^26.5.3",
-    "optimize-css-assets-webpack-plugin": "^5.0.4",
+    "jest": "^26.6.1",
     "prettier": "^2.1.2",
-    "style-loader": "^1.3.0",
-    "svg-inline-loader": "^0.8.2",
-    "terser-webpack-plugin": "^4.2.3",
-    "webpack": "^5.1.0",
+    "terser-webpack-plugin": "^5.0.1",
+    "webpack": "^5.2.0",
     "webpack-bundle-analyzer": "^3.9.0",
-    "webpack-cli": "^3.3.12",
+    "webpack-cli": "^4.1.0",
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {

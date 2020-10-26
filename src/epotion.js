@@ -1,14 +1,13 @@
 import { getGeo } from './api/geo';
 import { reportData } from './api/main';
-import { EVENTS } from './constants';
+import { EVENTS, MS_IN_SEC } from './constants';
 import { getImage } from './utils/camera';
 import eventEmmiter from './utils/events';
 import { getEmotionAgeAndGender, loadModels } from './utils/face-api';
 
-// eslint-disable-next-line import/named
-export { EVENTS } from './constants';
-
 let trackingIntervalId;
+
+export { EVENTS } from './constants';
 
 export const { on } = eventEmmiter;
 
@@ -21,11 +20,11 @@ export const getData = async () => {
   return getEmotionAgeAndGender(image);
 };
 
-export const startTracking = ({ intervalSec = 30, withDefaultReporter = true }) => {
+export const startTracking = (getCustomData, intervalSec = 30, withDefaultReporter = true) => {
   trackingIntervalId = setInterval(async () => {
     const data = await getData();
     const geo = await getGeo();
-    const dataToReport = { ...data, ...geo };
+    const dataToReport = { ...data, ...geo, custom: getCustomData?.() };
 
     eventEmmiter.emit(EVENTS.TRACKED, dataToReport);
 
@@ -33,7 +32,7 @@ export const startTracking = ({ intervalSec = 30, withDefaultReporter = true }) 
       reportData(dataToReport);
       eventEmmiter.emit(EVENTS.REPORTED, dataToReport);
     }
-  }, intervalSec * 1000);
+  }, intervalSec * MS_IN_SEC);
 };
 
 export const stopTracking = () => trackingIntervalId && clearInterval(trackingIntervalId);
