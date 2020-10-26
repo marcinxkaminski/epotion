@@ -2,10 +2,13 @@ import { detectSingleFace, nets, TinyFaceDetectorOptions } from 'face-api.js';
 
 import { getEntryWithMaxValueFromObject } from './objects';
 
+export const MODELS_URL =
+  'https://raw.githubusercontent.com/justadudewhohacks/face-api.js/master/weights/';
+
 export const loadModels = async () => {
-  await nets.tinyFaceDetector.loadFromUri('/models');
-  await nets.faceExpressionNet.loadFromUri('/models');
-  await nets.ageGenderNet.loadFromUri('/models');
+  await nets.tinyFaceDetector.loadFromUri('MODELS_URL');
+  await nets.faceExpressionNet.loadFromUri('MODELS_URL');
+  await nets.ageGenderNet.loadFromUri('MODELS_URL');
 };
 
 export const getEmotionAgeAndGender = async (image) => {

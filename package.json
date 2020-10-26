@@ -50,7 +50,7 @@
     "eslint-plugin-jest-dom": "^3.2.4",
     "eslint-plugin-markdown": "^2.0.0-rc.0",
     "eslint-plugin-no-secrets": "^0.6.8",
-    "eslint-plugin-no-unsanitized": "^3.1.5",
+    "eslint-plugin-no-unsanitized": "^3.1.4",
     "eslint-plugin-optimize-regex": "^1.2.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-security": "^1.4.0",
