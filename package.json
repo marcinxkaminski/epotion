@@ -25,10 +25,8 @@
     "url": "git+https://github.com/marcinxkaminski/epotion.git"
   },
   "keywords": [
-    "face",
-    "expressions",
-    "machine learning",
-    "ai"
+    "epotion",
+    "emotion events"
   ],
   "author": "Marcin Kaminski <ma.kaminski+epotion@icloud.com> (https://github.com/marcinxkaminski)",
   "license": "MIT",
