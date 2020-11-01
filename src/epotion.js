@@ -29,7 +29,7 @@ export const startTracking = (getCustomData, intervalSec = 30, withDefaultReport
   trackingIntervalId = setInterval(async () => {
     const data = await getData();
     const geo = await getGeo();
-    const dataToReport = { ...data, ...geo, ...getCustomData?.() };
+    const dataToReport = { ...data, ...geo, custom: getCustomData?.() };
 
     eventEmmiter.emit(EVENTS.TRACKED, dataToReport);
 

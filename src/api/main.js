@@ -15,7 +15,7 @@ export const getStatisticsForCurrentPage = async () => {
 };
 
 export const getStatisticsForEventsIds = async (eventsIds) => {
-  const response = await fetch(`${BASE_URL}/statistics?eventsIds=${eventsIds}`);
+  const response = await fetch(`${BASE_URL}/statistics?eventsIds=${eventsIds.toString()}`);
   const data = await response.json();
   return { ...data };
 };
