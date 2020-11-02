@@ -31,7 +31,7 @@ jobs:
 
       - name: Test 🧪
         run:
-          npm run test:coverage
+          npm run test
 
       - name: ESLint 🧹
         run:
