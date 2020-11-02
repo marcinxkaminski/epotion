@@ -1,6 +1,6 @@
 import { getCurrentPageUrl } from '../utils/url';
 
-export const BASE_URL = '';
+export const BASE_URL = 'https://epotion-api.herokuapp.com';
 
 export const reportData = (data) =>
   fetch(`${BASE_URL}/events`, {
