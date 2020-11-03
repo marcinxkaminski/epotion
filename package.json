@@ -15,7 +15,7 @@
     "build:dev": "webpack --mode=development --config webpack.config.cjs",
     "lint": "eslint './src/**/*.js'",
     "lint:fix": "eslint --fix './src/**/*.js'",
-    "test": "jest --passWithNoTests -- -coverage"
+    "test": "jest --passWithNoTests --forceExit -- -coverage"
   },
   "engines": {
     "node": ">= 14.0.0",
