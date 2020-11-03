@@ -8,7 +8,7 @@ module.exports = {
   plugins: [
     'xss',
     'html',
-    "jest",
+    'jest',
     'sonarjs',
     'unicorn',
     'jest-dom',
@@ -52,13 +52,15 @@ module.exports = {
       processor: 'markdown/markdown',
     },
   ],
+  settings: { jest: { version: 26 } },
   rules: {
-    'no-console': ["error", { allow: ["warn", "error"] }],
+    'no-console': ['error', { allow: ['warn', 'error'] }],
     'prettier/prettier': ['error'],
     'simple-import-sort/sort': 'error',
     'import/prefer-default-export': 'off',
     'no-secrets/no-secrets': [
       'error',
+      // eslint-disable-next-line no-secrets/no-secrets
       { additionalRegexes: { 'Basic Auth': 'Authorization: Basic [A-Za-z0-9+/=]*' } },
     ],
     'xss/no-mixed-html': 2,

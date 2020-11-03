@@ -1,3 +1,5 @@
+/* eslint-disable eslint-comments/disable-enable-pair,unicorn/no-abusive-eslint-disable,eslint-comments/no-unlimited-disable */
+/* eslint-disable */
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -5,20 +7,24 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const package_ = require('./package.json');
 
-module.exports = {
-  mode: 'production',
-  entry: {
-    index: path.join(__dirname, package_.main)
-  },
+module.exports = (environment, argv) => ({
+  target: 'web',
+  entry:
+    argv.mode === 'development'
+      ? { demo: path.join(__dirname, 'demo/demo.js') }
+      : { index: path.join(__dirname, 'src/epotion.js') },
   output: {
-    filename: '[name].[contenthash].js',
     path: path.join(__dirname, 'dist'),
+    filename: 'epotion.js',
+    library: 'epotion',
   },
-  plugins: [
-    new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({ chunks: ['index'], template: 'public/demo.html' }),
-    new BundleAnalyzerPlugin({ analyzerMode: 'static', openAnalyzer: false })
-  ],
+  plugins:
+    argv.mode === 'development'
+      ? [
+          new HtmlWebpackPlugin({ chunks: ['demo'], template: 'demo/demo.html' }),
+          new BundleAnalyzerPlugin({ analyzerMode: 'static', openAnalyzer: false }),
+        ]
+      : [new CleanWebpackPlugin()],
   module: {
     rules: [{ test: /\.m?js/, resolve: { fullySpecified: false } }],
   },
@@ -26,8 +32,8 @@ module.exports = {
     minimizer: [new TerserPlugin()],
   },
   devServer: {
-    contentBase: path.join(__dirname, 'public'),
+    contentBase: path.join(__dirname, 'demo'),
     host: '0.0.0.0',
     port: 8080,
   },
-};
+});

@@ -1,21 +1,27 @@
 import { getCurrentPageUrl } from '../utils/url';
 
+const EVENTS_PATH = '/events';
+const STATISTICS_PATH = '/statistics';
 export const BASE_URL = 'https://epotion-api.herokuapp.com';
 
-export const reportData = (data) =>
-  fetch(`${BASE_URL}/events`, {
+export const reportData = async (data) => {
+  const response = await fetch(`${BASE_URL}${EVENTS_PATH}`, {
     method: 'POST',
-    body: JSON.stringify({ url: getCurrentPageUrl(), ...data }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
   });
+  const { id } = await response.json();
+  return id;
+};
 
 export const getStatisticsForCurrentPage = async () => {
-  const response = await fetch(`${BASE_URL}/statistics?url=${getCurrentPageUrl()}`);
-  const data = await response.json();
-  return { ...data };
+  const response = await fetch(`${BASE_URL}${STATISTICS_PATH}?url=${getCurrentPageUrl()}`);
+  return response.json();
 };
 
 export const getStatisticsForEventsIds = async (eventsIds) => {
-  const response = await fetch(`${BASE_URL}/statistics?eventsIds=${eventsIds.toString()}`);
-  const data = await response.json();
-  return { ...data };
+  const response = await fetch(`${BASE_URL}${STATISTICS_PATH}?eventsIds=${eventsIds.toString()}`);
+  return response.json();
 };
