@@ -5,18 +5,16 @@ const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const package_ = require('./package.json');
 
 module.exports = (environment, argv) => ({
   target: 'web',
   entry:
     argv.mode === 'development'
       ? { demo: path.join(__dirname, 'demo/demo.js') }
-      : { index: path.join(__dirname, 'src/epotion.js') },
+      : path.join(__dirname, 'src/index.js'),
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'epotion.js',
-    library: 'epotion',
   },
   plugins:
     argv.mode === 'development'
