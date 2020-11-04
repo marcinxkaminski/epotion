@@ -1,21 +1,22 @@
 {
   "name": "epotion",
-  "version": "0.0.1",
+  "version": "0.0.9",
   "description": "Detects face expressions and gathers the data for later analysis",
-  "main": "src/epotion.js",
+  "main": "dist/epotion.js",
   "type": "module",
   "scripts": {
     "clean": "rm -rf node_modules",
     "reinstall": "npm run clean && npm install",
-    "rebuild": "npm run clean && npm install && npm run build",
+    "rebuild": "npm run clean && npm install && npm run build:prod",
     "start": "npm run start:dev",
     "start:dev": "webpack-dev-server --progress --colors --mode=development --config webpack.config.cjs",
-    "prepublishOnly": "npm run build:prod",
+    "prepublishOnly": "npm run patch && npm run build:prod",
     "build:prod": "webpack --mode=production --config webpack.config.cjs",
     "build:dev": "webpack --mode=development --config webpack.config.cjs",
     "lint": "eslint './src/**/*.js'",
     "lint:fix": "eslint --fix './src/**/*.js'",
-    "test": "jest --passWithNoTests --forceExit -- -coverage"
+    "test": "jest --passWithNoTests --forceExit -- -coverage",
+    "patch": "npm --no-git-tag-version version patch"
   },
   "engines": {
     "node": ">= 14.0.0",
@@ -29,9 +30,6 @@
     "epotion",
     "emotion events"
   ],
-  "files": [
-    "dist"
-  ],
   "author": "Marcin Kaminski <ma.kaminski+epotion@icloud.com> (https://github.com/marcinxkaminski)",
   "license": "MIT",
   "bugs": {
@@ -39,7 +37,10 @@
   },
   "homepage": "https://github.com/marcinxkaminski/epotion#readme",
   "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
     "@testing-library/jest-dom": "^5.11.5",
+    "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "eslint": "^7.12.1",
     "eslint-config-airbnb-base": "^14.2.0",
@@ -66,10 +67,11 @@
     "jest": "^26.6.2",
     "prettier": "^2.1.2",
     "terser-webpack-plugin": "^5.0.3",
-    "webpack": "^5.4.0",
+    "webpack": "^4.44.2",
     "webpack-bundle-analyzer": "^3.9.0",
     "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "webpack-node-externals": "^2.5.2"
   },
   "dependencies": {
     "face-api.js": "^0.22.2",

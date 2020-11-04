@@ -1,15 +1,15 @@
-import { getGeo } from './api/geo';
-import { getStatisticsForCurrentPage, getStatisticsForEventsIds, reportData } from './api/main';
-import { EVENTS, MS_IN_SEC } from './constants';
-import { getImage } from './utils/camera';
-import eventEmmiter from './utils/events';
-import { getEmotionAgeAndGender, loadModels } from './utils/face-api';
-import { getCurrentPageUrl } from './utils/url';
+import { getGeo } from './api/geo.js';
+import { getStatisticsForCurrentPage, getStatisticsForEventsIds, reportData } from './api/main.js';
+import { EVENTS, MS_IN_SEC } from './constants.js';
+import { getImage } from './utils/camera.js';
+import eventEmmiter from './utils/events.js';
+import { getEmotionAgeAndGender, loadModels } from './utils/face-api.js';
+import { getCurrentPageUrl } from './utils/url.js';
 
 let trackingIntervalId;
 const eventsIds = [];
 
-export { EVENTS } from './constants';
+export { EVENTS } from './constants.js';
 
 export const { on } = eventEmmiter;
 

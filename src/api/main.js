@@ -1,4 +1,4 @@
-import { getCurrentPageUrl } from '../utils/url';
+import { getCurrentPageUrl } from '../utils/url.js';
 
 const EVENTS_PATH = '/events';
 const STATISTICS_PATH = '/statistics';

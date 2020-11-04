@@ -1,5 +1,5 @@
 /* eslint-disable eslint-comments/disable-enable-pair,no-unsanitized/property,xss/no-mixed-html,no-console */
-import * as epotion from '../src/epotion';
+import epotion from './epotion.js';
 
 (async () => {
   const getCustomData = () => ({ type: 'demo' });

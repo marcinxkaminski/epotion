@@ -67,5 +67,6 @@ module.exports = {
     'xss/no-location-href-assign': 2,
     'filenames/match-exported': [2, 'kebab'],
     'filenames/no-index': 2,
+    'import/extensions': 0,
   },
 };
