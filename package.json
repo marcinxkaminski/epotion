@@ -1,11 +1,8 @@
 {
   "name": "epotion",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Detects face expressions and gathers the data for later analysis",
-  "main": "dist/epotion.js",
-  "files": [
-    "dist"
-  ],
+  "main": "src/epotion.js",
   "scripts": {
     "clean": "rm -rf node_modules",
     "reinstall": "npm run clean && npm install",
