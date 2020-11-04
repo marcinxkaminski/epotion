@@ -2,7 +2,7 @@ const getUserVideo = () => navigator.mediaDevices?.getUserMedia({ video: true })
 
 const stopUserVideo = (userVideo) => userVideo?.getVideoTracks().forEach((track) => track.stop());
 
-export const getImage = () =>
+const getImage = () =>
   new Promise((resolve, reject) => {
     const video = document.createElement('video');
 
@@ -29,3 +29,5 @@ export const getImage = () =>
       })
       .catch(reject);
   });
+
+module.exports = { getImage };

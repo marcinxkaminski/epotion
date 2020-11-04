@@ -1,10 +1,10 @@
-import { getCurrentPageUrl } from '../utils/url';
+const { getCurrentPageUrl } = require('../utils/url.js');
 
 const EVENTS_PATH = '/events';
 const STATISTICS_PATH = '/statistics';
-export const BASE_URL = 'https://epotion-api.herokuapp.com';
+const BASE_URL = 'https://epotion-api.herokuapp.com';
 
-export const reportData = async (data) => {
+const reportData = async (data) => {
   const response = await fetch(`${BASE_URL}${EVENTS_PATH}`, {
     method: 'POST',
     headers: {
@@ -16,12 +16,14 @@ export const reportData = async (data) => {
   return id;
 };
 
-export const getStatisticsForCurrentPage = async () => {
+const getStatisticsForCurrentPage = async () => {
   const response = await fetch(`${BASE_URL}${STATISTICS_PATH}?url=${getCurrentPageUrl()}`);
   return response.json();
 };
 
-export const getStatisticsForEventsIds = async (eventsIds) => {
+const getStatisticsForEventsIds = async (eventsIds) => {
   const response = await fetch(`${BASE_URL}${STATISTICS_PATH}?eventsIds=${eventsIds.toString()}`);
   return response.json();
 };
+
+module.exports = { reportData, getStatisticsForCurrentPage, getStatisticsForEventsIds };
