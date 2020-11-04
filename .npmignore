@@ -1,15 +1,11 @@
 src
 jest.config.mjs
 jest.setup.js
+README.md
+LICENSE
 .eslintrc.cjs
 .gitignore
 .huskyrc
 .nvmrc
 .prettierrc
-README.md
-webpack.config.cjs
-LICENSE
-demo
 .github
-dist/report.html
-.babelrc

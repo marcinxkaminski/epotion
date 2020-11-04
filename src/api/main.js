@@ -2,7 +2,7 @@ import { getCurrentPageUrl } from '../utils/url.js';
 
 const EVENTS_PATH = '/events';
 const STATISTICS_PATH = '/statistics';
-export const BASE_URL = 'https://epotion-api.herokuapp.com';
+const BASE_URL = 'https://epotion-api.herokuapp.com';
 
 export const reportData = async (data) => {
   const response = await fetch(`${BASE_URL}${EVENTS_PATH}`, {

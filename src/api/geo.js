@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://freegeoip.app/json/';
+const BASE_URL = 'https://freegeoip.app/json/';
 
 export const getGeo = async () => {
   const response = await fetch(BASE_URL);
