@@ -2,9 +2,10 @@
   "name": "epotion",
   "version": "0.0.3",
   "description": "Detects face expressions and gathers the data for later analysis",
-  "main": "src/epotion.js",
-  "module": "src/epotion.js",
-  "type": "module",
+  "main": "dist/epotion.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "clean": "rm -rf node_modules",
     "reinstall": "npm run clean && npm install",
@@ -15,7 +16,9 @@
     "build:dev": "webpack --mode=development --config webpack.config.cjs",
     "lint": "eslint './src/**/*.js'",
     "lint:fix": "eslint --fix './src/**/*.js'",
-    "test": "jest --passWithNoTests --forceExit -- -coverage"
+    "test": "jest --passWithNoTests --forceExit -- -coverage",
+    "prepublishOnly": "npm run patch && npm run build:prod",
+    "patch": "npm --no-git-tag-version version patch"
   },
   "engines": {
     "node": ">= 14.0.0",
@@ -29,9 +32,6 @@
     "epotion",
     "emotion events"
   ],
-  "files": [
-    "dist"
-  ],
   "author": "Marcin Kaminski <ma.kaminski+epotion@icloud.com> (https://github.com/marcinxkaminski)",
   "license": "MIT",
   "bugs": {
@@ -39,7 +39,9 @@
   },
   "homepage": "https://github.com/marcinxkaminski/epotion#readme",
   "devDependencies": {
+    "@babel/core": "^7.12.3",
     "@testing-library/jest-dom": "^5.11.5",
+    "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "eslint": "^7.12.1",
     "eslint-config-airbnb-base": "^14.2.0",

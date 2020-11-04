@@ -1,30 +1,32 @@
-import { getGeo } from './api/geo';
-import { getStatisticsForCurrentPage, getStatisticsForEventsIds, reportData } from './api/main';
-import { EVENTS, MS_IN_SEC } from './constants';
-import { getImage } from './utils/camera';
-import eventEmmiter from './utils/events';
-import { getEmotionAgeAndGender, loadModels } from './utils/face-api';
-import { getCurrentPageUrl } from './utils/url';
+const { getGeo } = require('./api/geo.js');
+const {
+  getStatisticsForCurrentPage,
+  getStatisticsForEventsIds,
+  reportData,
+} = require('./api/main.js');
+const { EVENTS, MS_IN_SEC } = require('./constants.js');
+const { getImage } = require('./utils/camera.js');
+const eventEmmiter = require('./utils/events.js');
+const { getEmotionAgeAndGender, loadModels } = require('./utils/face-api.js');
+const { getCurrentPageUrl } = require('./utils/url.js');
 
 let trackingIntervalId;
 const eventsIds = [];
 
-export { EVENTS } from './constants';
+const { on } = eventEmmiter;
 
-export const { on } = eventEmmiter;
+const init = () => loadModels();
 
-export const init = () => loadModels();
-
-export const getData = async () => {
+const getData = async () => {
   const image = await getImage();
   return getEmotionAgeAndGender(image);
 };
 
-export const getUserStatistics = () => getStatisticsForEventsIds(eventsIds);
+const getUserStatistics = () => getStatisticsForEventsIds(eventsIds);
 
-export const getCurrentPageStatistics = getStatisticsForCurrentPage;
+const getCurrentPageStatistics = getStatisticsForCurrentPage;
 
-export const track = async (getCustomData, withDefaultReporter = true) => {
+const track = async (getCustomData, withDefaultReporter = true) => {
   const data = await getData();
   const geo = await getGeo();
   const dataToReport = { ...data, ...geo, url: getCurrentPageUrl(), custom: getCustomData?.() };
@@ -38,11 +40,23 @@ export const track = async (getCustomData, withDefaultReporter = true) => {
   }
 };
 
-export const startTracking = (getCustomData, withDefaultReporter, intervalSec = 30) => {
+const startTracking = (getCustomData, withDefaultReporter, intervalSec = 30) => {
   trackingIntervalId = setInterval(
     () => track(getCustomData, withDefaultReporter),
     intervalSec * MS_IN_SEC,
   );
 };
 
-export const stopTracking = () => trackingIntervalId && clearInterval(trackingIntervalId);
+const stopTracking = () => trackingIntervalId && clearInterval(trackingIntervalId);
+
+module.exports = {
+  startTracking,
+  stopTracking,
+  track,
+  getCurrentPageStatistics,
+  getUserStatistics,
+  getData,
+  init,
+  on,
+  EVENTS,
+};

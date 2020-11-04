@@ -1,17 +1,17 @@
-import { detectSingleFace, nets, TinyFaceDetectorOptions } from 'face-api.js';
+const { detectSingleFace, nets, TinyFaceDetectorOptions } = require('face-api.js');
 
-import { getEntryWithMaxValueFromObject } from './objects';
+const { getEntryWithMaxValueFromObject } = require('./objects.js');
 
-export const MODELS_URL =
+const MODELS_URL =
   'https://raw.githubusercontent.com/justadudewhohacks/face-api.js/master/weights/';
 
-export const loadModels = async () => {
+const loadModels = async () => {
   await nets.tinyFaceDetector.loadFromUri(MODELS_URL);
   await nets.faceExpressionNet.loadFromUri(MODELS_URL);
   await nets.ageGenderNet.loadFromUri(MODELS_URL);
 };
 
-export const getEmotionAgeAndGender = async (image) => {
+const getEmotionAgeAndGender = async (image) => {
   const { expressions, age, gender } = await detectSingleFace(image, new TinyFaceDetectorOptions())
     .withFaceExpressions()
     .withAgeAndGender();
@@ -22,3 +22,5 @@ export const getEmotionAgeAndGender = async (image) => {
     gender,
   };
 };
+
+module.exports = { loadModels, getEmotionAgeAndGender };

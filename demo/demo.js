@@ -1,18 +1,25 @@
 /* eslint-disable eslint-comments/disable-enable-pair,no-unsanitized/property,xss/no-mixed-html,no-console */
-import * as epotion from '../src/epotion';
+const {
+  init,
+  EVENTS,
+  on,
+  getUserStatistics,
+  getCurrentPageStatistics,
+  startTracking,
+} = require('./epotion.js');
 
 (async () => {
   const getCustomData = () => ({ type: 'demo' });
 
-  await epotion.init();
+  await init();
 
-  epotion.startTracking(getCustomData, true, 30);
+  startTracking(getCustomData, true, 30);
 
-  epotion.on('*', console.log);
+  on('*', console.log);
 
-  epotion.on(epotion.EVENTS.REPORTED, async (event) => {
-    const userStatistics = await epotion.getUserStatistics();
-    const pageStatistics = await epotion.getCurrentPageStatistics();
+  on(EVENTS.REPORTED, async (event) => {
+    const userStatistics = await getUserStatistics();
+    const pageStatistics = await getCurrentPageStatistics();
 
     document.querySelector('#reportedEvent').innerHTML = JSON.stringify(event, undefined, 2);
     document.querySelector('#userStatistics').innerHTML = JSON.stringify(

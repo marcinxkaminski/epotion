@@ -1,7 +1,7 @@
 module.exports = {
   env: {
-    jest: true,
     node: true,
+    jest: true,
     es2020: true,
     browser: true,
   },

@@ -1,1 +1,3 @@
-export const getCurrentPageUrl = () => window.location.href.split('?')[0];
+const getCurrentPageUrl = () => window.location.href.split('?')[0];
+
+module.exports = { getCurrentPageUrl };

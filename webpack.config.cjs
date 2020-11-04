@@ -11,10 +11,13 @@ module.exports = (environment, argv) => ({
   entry:
     argv.mode === 'development'
       ? { demo: path.join(__dirname, 'demo/demo.js') }
-      : path.join(__dirname, 'src/index.js'),
+      : path.join(__dirname, 'src/epotion.js'),
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'epotion.js',
+    library: 'epotion',
+    libraryTarget: 'umd',
+    umdNamedDefine: true,
   },
   plugins:
     argv.mode === 'development'
@@ -24,7 +27,12 @@ module.exports = (environment, argv) => ({
         ]
       : [new CleanWebpackPlugin()],
   module: {
-    rules: [{ test: /\.m?js/, resolve: { fullySpecified: false } }],
+    rules: [
+      { test: /\.js?$/, exclude: /(node_modules)/, use: 'babel-loader' }
+    ],
+  },
+  resolve: {
+    extensions: ['.js'],
   },
   optimization: {
     minimizer: [new TerserPlugin()],
