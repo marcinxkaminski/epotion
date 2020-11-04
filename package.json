@@ -1,6 +1,6 @@
 {
   "name": "epotion",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Detects face expressions and gathers the data for later analysis",
   "main": "src/epotion.js",
   "scripts": {

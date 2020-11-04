@@ -6,7 +6,7 @@ jest.setup.js
 .gitignore
 .huskyrc
 .nvmrc
-.prettierc
+.prettierrc
 README.md
 webpack.config.cjs
 LICENSE
