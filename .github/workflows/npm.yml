@@ -30,7 +30,7 @@ jobs:
 
       - name: Build 👷🏼‍♂️
         run:
-          npm run build:prod
+          npm run build
 
       - name: Publish NPM package 📦
         run: npm publish
