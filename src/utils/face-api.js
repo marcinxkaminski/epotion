@@ -2,8 +2,7 @@ import { getEntryWithMaxValueFromObject } from './objects.js';
 
 const { detectSingleFace, nets, TinyFaceDetectorOptions } = require('face-api.js');
 
-const MODELS_URL =
-  'https://raw.githubusercontent.com/justadudewhohacks/face-api.js/master/weights/';
+const MODELS_URL = 'https://marcinxkaminski.github.io/Trash/';
 
 export const loadModels = async () => {
   await nets.tinyFaceDetector.loadFromUri(MODELS_URL);

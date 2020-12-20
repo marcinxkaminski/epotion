@@ -1,4 +1,4 @@
-export const getEntryWithMaxValueFromObject = (object) => {
+export const getEntryWithMaxValueFromObject = (object = {}) => {
   const result = { key: '', value: 0 };
 
   Object.entries(object).forEach(([key, value]) => {
