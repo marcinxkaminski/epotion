@@ -1,6 +1,6 @@
-import { detectSingleFace, nets, TinyFaceDetectorOptions } from 'face-api.js';
-
 import { getEntryWithMaxValueFromObject } from './objects.js';
+
+const { detectSingleFace, nets, TinyFaceDetectorOptions } = require('face-api.js');
 
 const MODELS_URL =
   'https://raw.githubusercontent.com/justadudewhohacks/face-api.js/master/weights/';

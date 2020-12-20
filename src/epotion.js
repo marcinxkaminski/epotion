@@ -11,8 +11,6 @@ const eventsIds = [];
 
 export { EVENTS } from './constants.js';
 
-export const { on } = eventEmmiter;
-
 export const init = () => loadModels();
 
 export const getData = async () => {
@@ -46,3 +44,5 @@ export const startTracking = (getCustomData, withDefaultReporter, intervalSec = 
 };
 
 export const stopTracking = () => trackingIntervalId && clearInterval(trackingIntervalId);
+
+export const { on } = eventEmmiter;
