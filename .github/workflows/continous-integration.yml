@@ -40,6 +40,10 @@ jobs:
         run:
           npm run lint
 
+      - name: Snyk 🐶
+        uses:
+          snyk/actions@0.1.1
+
       - name: Build 👷🏼‍♂️
         run:
           npm run build:prod

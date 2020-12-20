@@ -1,5 +1,3 @@
-const mitt = require('mitt');
+import mitt from 'mitt';
 
-const events = mitt();
-
-module.exports = events;
+export default mitt();
