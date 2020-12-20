@@ -7,6 +7,7 @@ const BASE_URL = 'https://epotion-api.herokuapp.com';
 export const reportData = async (data) => {
   const response = await fetch(`${BASE_URL}${EVENTS_PATH}`, {
     method: 'POST',
+    mode: 'cors',
     headers: {
       'Content-Type': 'application/json',
     },

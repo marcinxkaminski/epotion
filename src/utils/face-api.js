@@ -12,9 +12,11 @@ export const loadModels = async () => {
 };
 
 export const getEmotionAgeAndGender = async (image) => {
-  const { expressions, age, gender } = await detectSingleFace(image, new TinyFaceDetectorOptions())
+  const detectedData = await detectSingleFace(image, new TinyFaceDetectorOptions())
     .withFaceExpressions()
     .withAgeAndGender();
+
+  const { expressions, age, gender } = detectedData || {};
 
   return {
     emotion: getEntryWithMaxValueFromObject(expressions).key,
