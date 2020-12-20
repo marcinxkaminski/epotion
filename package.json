@@ -1,6 +1,6 @@
 {
   "name": "epotion",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Detects face expressions and gathers the data for later analysis",
   "source": "src/epotion.js",
   "main": "dist/epotion.js",
@@ -18,7 +18,8 @@
     "lint": "eslint './src/**/*.js'",
     "lint:fix": "eslint --fix './src/**/*.js'",
     "test": "jest --passWithNoTests --forceExit -- -coverage",
-    "patch": "npm --no-git-tag-version version patch"
+    "patch": "npm --no-git-tag-version version patch",
+    "publish:npm": "npm run build && npm publish"
   },
   "engines": {
     "node": ">= 14.0.0",
