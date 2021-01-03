@@ -125,7 +125,7 @@ npm ci
 npm run start
 ```
 
-<!-- TODO: add usage with react-epotion -->
+You could also improve your development experience by using [react-epotion](https://github.com/marcinxkaminski/react-epotion) to test this. Use `npm link` for that purpose. [More information here](https://docs.npmjs.com/cli/v6/commands/npm-link).
 
 ## Contribution
 
