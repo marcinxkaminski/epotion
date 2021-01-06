@@ -2,7 +2,7 @@
 
 Detects users' emotions and gathers the data for later analysis.
 
-![CI](https://github.com/marcinxkaminski/face-expression-detector-js/workflows/CI/badge.svg?branch=master)
+![Continous Integration ♾](https://github.com/marcinxkaminski/epotion/workflows/Continous%20Integration%20%E2%99%BE/badge.svg)
 [![npm version](https://badge.fury.io/js/epotion.svg)](https://badge.fury.io/js/epotion)
 
 ## Install 🔧
