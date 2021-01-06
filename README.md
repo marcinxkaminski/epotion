@@ -114,6 +114,7 @@ It's pretty straightforward and the best starting point is `src/epotion.js` file
 ## Future Work 🔮
 
 - [ ] Move from `face-api.js` to own TensorFlow based solution.
+- [ ] Tests
 - [ ] Improve documentation
 
 ## Development 👷🏼‍♂️
