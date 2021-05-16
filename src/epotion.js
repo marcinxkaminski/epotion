@@ -36,7 +36,7 @@ export const track = async (customReporter, enableReporting = true) => {
   eventEmmiter.emit(EVENTS.TRACKED, { ...dataToReport, image });
 
   if (dataToReport.emotion && enableReporting) {
-    report(customReporter, dataToReport);
+    report(customReporter, { ...dataToReport, image });
   }
 };
 
